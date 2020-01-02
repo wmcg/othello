@@ -1,27 +1,30 @@
 import React, { Fragment } from "react";
 
-const noSquares = 64;
-const boardDimension = 8; // sq root of noSquares
-const sizeSquare = 12.5;
+const Board = ({ noSquares, boardSizePx }) => {
+  const boardDimensions = { width: boardSizePx, height: boardSizePx };
+  const squareDimensions = boardSizePx / noSquares;
 
-const Board = () => {
-  let squares = [];
+  let squareLocations = [];
 
-  for (let x = 0; x < boardDimension * sizeSquare; x = x + sizeSquare) {
-    for (let y = 0; y < boardDimension * sizeSquare; y = y + sizeSquare) {
-      squares.push({
-        left: `${x}%`,
-        top: `${y}%`
+  for (let x = 0; x < noSquares * squareDimensions; x = x + squareDimensions) {
+    for (
+      let y = 0;
+      y < noSquares * squareDimensions;
+      y = y + squareDimensions
+    ) {
+      squareLocations.push({
+        width: squareDimensions,
+        height: squareDimensions,
+        left: `${x}px`,
+        top: `${y}px`
       });
     }
   }
 
-  console.log(squares);
-
   return (
     <Fragment>
-      <div className="board">
-        {squares.map((square, i) => (
+      <div className="board" style={boardDimensions}>
+        {squareLocations.map((square, i) => (
           <div className="board-square" key={i} style={square} />
         ))}
       </div>

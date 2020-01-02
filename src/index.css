@@ -10,8 +10,8 @@
 .board-square {
   position: absolute;
   margin: 0px;
-  width: 100px;
   height: 100px;
+  width: 100px;
   border: 1px solid black;
   z-index: 1;
 }
