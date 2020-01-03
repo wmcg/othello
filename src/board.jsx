@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import Pieces from "./pieces";
 
-const Board = ({ noSquares, boardSizePx }) => {
+const Board = ({ noSquares, boardSizePx, pieces }) => {
   const boardDimensions = { width: boardSizePx, height: boardSizePx };
   const squareDimensions = boardSizePx / noSquares;
 
@@ -27,6 +28,7 @@ const Board = ({ noSquares, boardSizePx }) => {
         {squareLocations.map((square, i) => (
           <div className="board-square" key={i} style={square} />
         ))}
+        <Pieces squareDimensions={squareDimensions} pieces={pieces} />
       </div>
     </Fragment>
   );
